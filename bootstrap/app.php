@@ -17,8 +17,8 @@ $app = Application::configure(basePath: dirname(__DIR__))
         //
     })->create();
 
-/* Tambahkan baris ini biar Vercel nggak error 500 */
-if (isset($_ENV['VERCEL']) || isset($_ENV['AWS_LAMBDA_FUNCTION_NAME'])) {
+/* Paksa storage ka /tmp lamun di Vercel */
+if (isset($_ENV['VERCEL']) || getenv('VERCEL')) {
     $app->useStoragePath('/tmp/storage');
 }
 
