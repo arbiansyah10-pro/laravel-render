@@ -17,9 +17,7 @@ $app = Application::configure(basePath: dirname(__DIR__))
         //
     })->create();
 
-/* Paksa storage ka /tmp lamun di Vercel */
-if (isset($_ENV['VERCEL']) || getenv('VERCEL')) {
-    $app->useStoragePath('/tmp/storage');
-}
+/* Paksa storage path ke /tmp */
+$app->useStoragePath('/tmp/storage');
 
 return $app;
